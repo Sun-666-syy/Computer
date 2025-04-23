@@ -1,0 +1,862 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <title>红色旅游景点可视化平台|首页</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
+        <meta content="Themesbrand" name="author">
+        <!-- App favicon -->
+
+        <!-- plugin css -->
+        <link href="/static/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css">
+
+        <!-- preloader css -->
+        <link rel="stylesheet" href="/static/css/preloader.min.css" type="text/css">
+
+        <!-- Bootstrap Css -->
+        <link href="/static/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
+        <!-- Icons Css -->
+        <link href="/static/css/icons.min.css" rel="stylesheet" type="text/css">
+        <!-- App Css-->
+        <link href="/static/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
+        <link href="/static/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+        <link href="/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <link href="/static/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+    <!-- <body data-layout="horizontal"> -->
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            
+            <header id="page-topbar">
+                <div class="navbar-header">
+                    <div class="d-flex">
+                        <!-- LOGO -->
+                        <div class="navbar-brand-box">
+                            <a href="" class="logo logo-dark">
+                                <span class="logo-sm">
+                                    <img src="/static/picture/logo-sm.svg" alt="" height="24">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="/static/picture/logo-sm.svg" alt="" height="24"> <span class="logo-txt">红旅景点可视化</span>
+                                </span>
+                            </a>
+
+                            <a href="" class="logo logo-light">
+                                <span class="logo-sm">
+                                    <img src="/static/picture/logo-sm.svg" alt="" height="24">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="/static/picture/logo-sm.svg" alt="" height="24"> <span class="logo-txt">红旅景点可视化</span>
+                                </span>
+                            </a>
+                        </div>
+
+                        <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn">
+                            <i class="fa fa-fw fa-bars"></i>
+                        </button>
+
+                        <!-- App Search-->
+                        <form class="app-search d-none d-lg-block">
+                            <div class="position-relative">
+                                <input type="text" class="form-control" placeholder="搜索...">
+                                <button class="btn btn-primary" type="button"><i class="bx bx-search-alt align-middle"></i></button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="d-flex">
+
+                        <div class="dropdown d-inline-block d-lg-none ms-2">
+                            <button type="button" class="btn header-item" id="page-header-search-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i data-feather="search" class="icon-lg"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-search-dropdown">
+        
+                                <form class="p-3">
+                                    <div class="form-group m-0">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="搜索..." aria-label="Search Result">
+
+                                            <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="dropdown d-none d-sm-inline-block">
+                            <button type="button" class="btn header-item" id="mode-setting-btn">
+                                <i data-feather="moon" class="icon-lg layout-mode-dark"></i>
+                                <i data-feather="sun" class="icon-lg layout-mode-light"></i>
+                            </button>
+                        </div>
+
+                        <div class="dropdown d-none d-lg-inline-block ms-1">
+                            <button type="button" class="btn header-item" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i data-feather="grid" class="icon-lg"></i>
+                            </button>
+                        </div>
+
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item noti-icon position-relative" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i data-feather="bell" class="icon-lg"></i>
+                                <span class="badge bg-danger rounded-pill">5</span>
+                            </button>
+                        </div>
+
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item right-bar-toggle me-2">
+                                <i data-feather="settings" class="icon-lg"></i>
+                            </button>
+                        </div>
+
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item topbar-light bg-light-subtle border-start border-end" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img class="rounded-circle header-profile-user" src="/static/picture/avatar-1.jpg" alt="Header Avatar">
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium">用户信息</span>
+                                <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <!-- item-->
+                                <a class="dropdown-item" href="#"><i class="mdi mdi-face-man font-size-16 align-middle me-1"></i> 简介</a>
+                                <a class="dropdown-item" href="#"><i class="mdi mdi-lock font-size-16 align-middle me-1"></i> 锁屏</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> 退出登录</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="vertical-menu">
+
+                <div data-simplebar="" class="h-100">
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <!-- Left Menu Start -->
+                        <ul class="metismenu list-unstyled" id="side-menu">
+                            <li class="menu-title" data-key="t-menu">菜单栏</li>
+
+                            <li>
+                                <a href="">
+                                    <i data-feather="home"></i>
+                                    <span data-key="t-dashboard">首页</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/table">
+                                    <i data-feather="sliders"></i>
+                                    <span data-key="t-horizontal">旅游景点数据列表</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                    <i data-feather="grid"></i>
+                                    <span data-key="t-apps">5A景区评论展示</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li>
+                                        <a href="/table_1">
+                                            <i data-feather="gift"></i>
+                                            <span data-key="t-horizontal">评论展示-首页</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/table_2">
+                                            <i data-feather="briefcase"></i>
+                                            <span data-key="t-horizontal">评论展示-第2页</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/comment_cw">
+                                    <i data-feather="map"></i>
+                                    <span data-key="t-horizontal">景区评论词云展示</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/cor_analysis">
+                                    <i data-feather="file-text"></i>
+                                    <span data-key="t-horizontal">景区关联度可视化展示</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qinggan_analysis">
+                                    <i data-feather="file-text"></i>
+                                    <span data-key="t-horizontal">景区评论情感分析</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div class="card sidebar-alert border-0 text-center mx-4 mb-0 mt-5">
+                            <div class="card-body">
+                                <img src="/static/picture/giftbox.png" alt="">
+                                <div class="mt-4">
+                                    <h5 class="alertcard-title font-size-16">无限制访问</h5>
+                                    <p class="font-size-13">从免费试用版升级您的计划，选择“商业计划”~</p>
+                                    <a href="#!" class="btn btn-primary mt-2">现在更新</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sidebar -->
+                </div>
+            </div>
+            <!-- Left Sidebar End -->
+
+            
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="mb-sm-0 font-size-18">红色旅游景点数据可视化</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">菜单栏</a></li>
+                                            <li class="breadcrumb-item active">首页</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <!-- card -->
+                                <div class="card card-h-100">
+                                    <!-- card body -->
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-6">
+                                                <span class="text-muted mb-3 lh-1 d-block text-truncate">红旅景点最多城市</span>
+                                                <h4 class="mb-3">
+                                                    <span class="text">北京</span>
+                                                </h4>
+                                            </div>
+                                            <div class="col-6">
+                                                <div id="mini-chart1" data-colors='["#ff0000"]' class="apex-charts mb-2"></div>
+                                            </div>
+                                        </div>
+                                        <div class="text-nowrap">
+                                            <span class="badge badge-soft-success text-success">景区个数：</span>
+                                            <span class="ms-1 text-muted font-size-13">43 个</span>
+                                        </div>
+                                    </div><!-- end card body -->
+                                </div><!-- end card -->
+                            </div><!-- end col -->
+        
+                            <div class="col-xl-3 col-md-6">
+                                <!-- card -->
+                                <div class="card card-h-100">
+                                    <!-- card body -->
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-8">
+                                                <span class="text-muted mb-3 lh-1 d-block text-truncate">热度最高景区</span>
+                                                <h4 class="mb-3">
+                                                    <span class="text" >天安门广场</span>
+                                                </h4>
+                                            </div>
+                                            <div class="col-4">
+                                                <div id="mini-chart2" data-colors='["#ff0000"]' class="apex-charts mb-2"></div>
+                                            </div>
+                                        </div>
+                                        <div class="text-nowrap">
+                                            <span class="badge badge-soft-danger text-danger">总热度：</span>
+                                            <span class="ms-1 text-muted font-size-13">14861.21</span>
+                                        </div>
+                                    </div><!-- end card body -->
+                                </div><!-- end card -->
+                            </div><!-- end col-->
+        
+                            <div class="col-xl-3 col-md-6">
+                                <!-- card -->
+                                <div class="card card-h-100">
+                                    <!-- card body -->
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-9">
+                                                <span class="text-muted mb-3 lh-1 d-block text-truncate">发展总指数最高红色旅游区</span>
+                                                <h4 class="mb-3">
+                                                    <span class="text">浙沪红色旅游区</span>
+                                                </h4>
+                                            </div>
+                                            <div class="col-3">
+                                                <div id="mini-chart3" data-colors='["#ff0000"]' class="apex-charts mb-2"></div>
+                                            </div>
+                                        </div>
+                                        <div class="text-nowrap">
+                                            <span class="badge badge-soft-success text-success"> 总指数：</span>
+                                            <span class="ms-1 text-muted font-size-13">100.00</span>
+                                        </div>
+                                    </div><!-- end card body -->
+                                </div><!-- end card -->
+                            </div><!-- end col -->
+        
+                            <div class="col-xl-3 col-md-6">
+                                <!-- card -->
+                                <div class="card card-h-100">
+                                    <!-- card body -->
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-10">
+                                                <span class="text-muted mb-3 lh-1 d-block text-truncate">发展总指数最高红色旅游城市</span>
+                                                <h4 class="mb-3">
+                                                    <span class="text">长沙市</span>
+                                                </h4>
+                                            </div>
+                                            <div class="col-2">
+                                                <div id="mini-chart4" data-colors='["#ff0000"]' class="apex-charts mb-2"></div>
+                                            </div>
+                                        </div>
+                                        <div class="text-nowrap">
+                                            <span class="badge badge-soft-success text-success"> 总指数：</span>
+                                            <span class="ms-1 text-muted font-size-13">100.00</span>
+                                        </div>
+                                    </div><!-- end card body -->
+                                </div><!-- end card -->
+                            </div><!-- end col -->    
+                        </div><!-- end row-->
+
+                        <div class="row">
+                            <div class="col-xl-5">
+                                <!-- card -->
+                                <div class="card card-h-100">
+                                    <!-- card body -->
+                                    <div class="card-body">
+                                        <div id="mainss" style="width: 100%;height: 450px"></div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                            <div class="col-xl-7">
+                                <div class="row">
+                                    <div class="col-xl-8">
+                                        <!-- card -->
+                                        <div class="card card-h-100">
+                                            <!-- card body -->
+                                            <div class="card-body">
+                                                <div id="mainsss" style="width: 100%;height: 450px"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end col -->
+
+                                    <div class="col-xl-4">
+                                        <!-- card -->
+                                        <div class="card bg-danger text-white shadow-primary card-h-100">
+                                            <!-- card body -->
+                                            <div class="card-body p-0">
+                                                <div id="carouselExampleCaptions" class="carousel slide text-center widget-carousel" data-bs-ride="carousel">                                                   
+                                                    <div class="carousel-inner">
+                                                        <div class="carousel-item active">
+                                                            <div class="text-center p-4">
+                                                                <i class="mdi mdi-bitcoin widget-box-1-icon"></i>
+                                                                <div class="avatar-md m-auto">
+                                                                    <span class="avatar-title rounded-circle bg-light-subtle text-white font-size-24">
+                                                                        <i class="mdi mdi-axe"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <h4 class="mt-3 lh-base fw-normal text-white"><b>井冈山小故事</b></h4>
+                                                                <p class="text-white-50 font-size-13">井冈山，地处湘赣边界罗霄山脉中段，介于湖南炎陵县和江西宁冈、遂川、永新四县之交。
+                                                                    秋收起义失败后，毛泽东率领起义部队南下，决定在井冈山地区建立革命根据地，
+                                                                    点燃了“工农武装割据”的星星之火，照亮了中国革命前进的方向，
+                                                                    成为中国革命走上以农村包围城市、武装夺取政权道路的开端。这条道路，代表着中国革命和革命战争发展的正确方向。</p>
+                                                                <button type="button" class="btn btn-light btn-sm">查看详情 <i class="mdi mdi-arrow-right ms-1"></i></button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- end carousel-item -->
+                                                        <div class="carousel-item">
+                                                            <div class="text-center p-4">
+                                                                <i class="mdi mdi-ethereum widget-box-1-icon"></i>
+                                                                <div class="avatar-md m-auto">
+                                                                    <span class="avatar-title rounded-circle bg-light-subtle text-white font-size-24">
+                                                                        <i class="mdi mdi-flag"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <h4 class="mt-3 lh-base fw-normal text-white"><b>遵义会议小故事</b> </h4>
+                                                                <p class="text-white-50 font-size-13">1935年1月中共中央政治局在贵州遵义召开的独立自主地解决中国革命问题的一次极其重要的扩大会议，
+                                                                    是在红军第五次反“围剿”失败和长征初期严重受挫的情况下，为了纠正博古、王明、李德等人“左”倾领导在军事指挥上的错误而召开的。
+                                                                    这次会议，在极端危急的历史关头，挽救了党，挽救了中国革命，在中国共产党和红军的历史上，是一个生死攸关的转折点。</p>
+                                                                <button type="button" class="btn btn-light btn-sm">查看详情<i class="mdi mdi-arrow-right ms-1"></i></button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- end carousel-item -->
+                                                        <div class="carousel-item">
+                                                            <div class="text-center p-4">
+                                                                <i class="mdi mdi-litecoin widget-box-1-icon"></i>
+                                                                <div class="avatar-md m-auto">
+                                                                    <span class="avatar-title rounded-circle bg-light-subtle text-white font-size-24">
+                                                                         <i class="mdi mdi-flag"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <h4 class="mt-3 lh-base fw-normal text-white"><b>铁人王进喜小故事</b></h4>
+                                                                <p class="text-white-50 font-size-13">钢铁钻井队 王进喜是新中国第一代钻井工人，面对新中国成立之初石油短缺的局面，
+                                                                    他以强烈的责任感、高昂的热情投入为祖国找石油的工作之中。 1958年9月，他带领钻井队在大西北的油田里，
+                                                                    创造了当时月钻井进尺的全国最高纪录，荣获“钢铁钻井队”的称号。 1960年3月，他率队从玉门到大庆参加石油大会战。</p>
+                                                                <button type="button" class="btn btn-light btn-sm">查看详情 <i class="mdi mdi-arrow-right ms-1"></i></button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- end carousel-item -->
+                                                    </div>
+                                                    <!-- end carousel-inner -->
+                                                    
+                                                    <div class="carousel-indicators carousel-indicators-rounded">
+                                                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                                    </div>
+                                                    <!-- end carousel-indicators -->
+                                                </div>
+                                                <!-- end carousel -->
+                                            </div>
+                                            <!-- end card body -->
+                                        </div>
+                                        <!-- end card -->
+                                    </div>
+                                    <!-- end col -->
+                                </div>
+                                <!-- end row -->
+                            </div>
+                            <!-- end col -->
+                        </div> <!-- end row-->
+
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <!-- card -->
+                                <div class="card">
+                                    <!-- card body -->
+                                    <div class="card-body">
+                                        <div class="d-flex flex-wrap align-items-center mb-4">
+                                            <h5 class="card-title me-2">红色旅游景点可视化地图</h5>
+                                        </div>
+                                        <div id="mains" style="width:100%;height:450px">
+
+                                        </div>
+                                    </div>
+                                    <!-- end card -->
+                                </div>
+                                <!-- end col -->
+                            </div>
+                            <!-- end row-->
+                        </div>
+                        <!-- end row-->
+                        </div><!-- end row -->
+                    </div>
+                    <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="copyright text-center my-auto">
+                            <span>红色旅游景区可视化平台@<a target="_blank" href="#">Django + Mysql + Echarts</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        
+        <!-- Right Sidebar -->
+        <div class="right-bar">
+            <div data-simplebar="" class="h-100">
+                <div class="rightbar-title d-flex align-items-center p-3">
+
+                    <h5 class="m-0 me-2">Theme Customizer</h5>
+
+                    <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+                        <i class="mdi mdi-close noti-icon"></i>
+                    </a>
+                </div>
+
+                <!-- Settings -->
+                <hr class="m-0">
+
+                <div class="p-4">
+                    <h6 class="mb-3">Layout</h6>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout" id="layout-vertical" value="vertical">
+                        <label class="form-check-label" for="layout-vertical">Vertical</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout" id="layout-horizontal" value="horizontal">
+                        <label class="form-check-label" for="layout-horizontal">Horizontal</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Layout Mode</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-mode" id="layout-mode-light" value="light">
+                        <label class="form-check-label" for="layout-mode-light">Light</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-mode" id="layout-mode-dark" value="dark">
+                        <label class="form-check-label" for="layout-mode-dark">Dark</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Layout Width</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-width" id="layout-width-fuild" value="fuild" onchange="document.body.setAttribute('data-layout-size', 'fluid')">
+                        <label class="form-check-label" for="layout-width-fuild">Fluid</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-width" id="layout-width-boxed" value="boxed" onchange="document.body.setAttribute('data-layout-size', 'boxed')">
+                        <label class="form-check-label" for="layout-width-boxed">Boxed</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Layout Position</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-position" id="layout-position-fixed" value="fixed" onchange="document.body.setAttribute('data-layout-scrollable', 'false')">
+                        <label class="form-check-label" for="layout-position-fixed">Fixed</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-position" id="layout-position-scrollable" value="scrollable" onchange="document.body.setAttribute('data-layout-scrollable', 'true')">
+                        <label class="form-check-label" for="layout-position-scrollable">Scrollable</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Topbar Color</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="topbar-color" id="topbar-color-light" value="light" onchange="document.body.setAttribute('data-topbar', 'light')">
+                        <label class="form-check-label" for="topbar-color-light">Light</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="topbar-color" id="topbar-color-dark" value="dark" onchange="document.body.setAttribute('data-topbar', 'dark')">
+                        <label class="form-check-label" for="topbar-color-dark">Dark</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Size</h6>
+
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-size" id="sidebar-size-default" value="default" onchange="document.body.setAttribute('data-sidebar-size', 'lg')">
+                        <label class="form-check-label" for="sidebar-size-default">Default</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-size" id="sidebar-size-compact" value="compact" onchange="document.body.setAttribute('data-sidebar-size', 'md')">
+                        <label class="form-check-label" for="sidebar-size-compact">Compact</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-size" id="sidebar-size-small" value="small" onchange="document.body.setAttribute('data-sidebar-size', 'sm')">
+                        <label class="form-check-label" for="sidebar-size-small">Small (Icon View)</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Color</h6>
+
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-color" id="sidebar-color-light" value="light" onchange="document.body.setAttribute('data-sidebar', 'light')">
+                        <label class="form-check-label" for="sidebar-color-light">Light</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-color" id="sidebar-color-dark" value="dark" onchange="document.body.setAttribute('data-sidebar', 'dark')">
+                        <label class="form-check-label" for="sidebar-color-dark">Dark</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-color" id="sidebar-color-brand" value="brand" onchange="document.body.setAttribute('data-sidebar', 'brand')">
+                        <label class="form-check-label" for="sidebar-color-brand">Brand</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Direction</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-direction" id="layout-direction-ltr" value="ltr">
+                        <label class="form-check-label" for="layout-direction-ltr">LTR</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-direction" id="layout-direction-rtl" value="rtl">
+                        <label class="form-check-label" for="layout-direction-rtl">RTL</label>
+                    </div>
+
+                </div>
+
+            </div> <!-- end slimscroll-menu-->
+        </div>
+        <!-- /Right-bar -->
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- JAVASCRIPT -->
+        <script src="/static/js/jquery.min.js"></script>
+        <script src="/static/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/js/metisMenu.min.js"></script>
+        <script src="/static/js/simplebar.min.js"></script>
+        <script src="/static/js/waves.min.js"></script>
+        <script src="/static/js/feather.min.js"></script>
+        <!-- pace js -->
+        <script src="/static/js/pace.min.js"></script>
+
+        <!-- apexcharts -->
+        <script src="/static/js/apexcharts.min.js"></script>
+
+        <!-- Plugins js-->
+        <script src="/static/js/jquery-jvectormap-1.2.2.min.js"></script>
+        <script src="/static/js/jquery-jvectormap-world-mill-en.js"></script>
+        <!-- dashboard init -->
+        <script src="/static/js/dashboard.init.js"></script>
+
+        <script src="/static/js/app.js"></script>
+        <script src="/static/js/echarts.js"></script>
+        <script src="/static/vendor/chart.js/Chart.min.js"></script>
+        <script src="/static/vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="/static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="/static/vendor/jquery/jquery.min.js"></script>
+        <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="/static/js/sb-admin-2.min.js"></script>
+        <script src="/static/js/demo/datatables-demo.js"></script>
+        <!-- Page level custom scripts -->
+        <script src="/static/js/demo/chart-area-demo.js"></script>
+        <script src="/static/js/demo/chart-pie-demo.js"></script>
+        <script src="/static/js/echarts.js"></script>
+        <script src="/static/js/china.js"></script>
+
+        <script>
+            var chartDom = document.getElementById('mains');
+            var myChart = echarts.init(chartDom);
+            var option;
+            var barColor = '#E54D42';
+
+            option = {
+              title: {
+                text: '全国各地红色旅游景点Top10'
+              },
+              tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                  type: 'shadow'
+                }
+              },
+              legend: {},
+              grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+              },
+              xAxis: {
+                type: 'value',
+                boundaryGap: [0, 0.01]
+              },
+              yAxis: {
+                type: 'category',
+                data: [
+                  '江西',
+                  '辽宁',
+                  '河南',
+                  '广东',
+                  '陕西',
+                  '山东',
+                  '湖南',
+                  '湖北',
+                  '河北',
+                  '北京',
+                  '全国旅游景点总数'
+                ]
+              },
+              series: [
+                {
+                  name: '统计截至2021年',
+                  type: 'bar',
+                  itemStyle: {
+                  // 柱状图的颜色
+                  color: barColor
+              },
+                  data: [11, 12, 13, 13, 13, 14, 14, 14, 14, 15, 300]
+                }
+              ]
+            };
+
+            option && myChart.setOption(option);
+        </script>
+    <script>
+        var chartDom = document.getElementById('mainss');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        var barColor = '#E54D42';
+        option = {
+          title: {
+            text: '全国重点红色旅游区发展总指数',
+            subtext: '数据来源于：《中国红色旅游发展报告（2022）》'
+          },
+          tooltip: {
+            trigger: 'axis'
+          },
+          legend: {
+            data: ['指数', '指数']
+          },
+          toolbox: {
+            show: true,
+            feature: {
+              dataView: { show: true, readOnly: false },
+              magicType: { show: true, type: ['line', 'bar'] },
+              restore: { show: true },
+              saveAsImage: { show: true }
+            }
+          },
+          calculable: true,
+          xAxis: [
+            {
+              type: 'category',
+              // prettier-ignore
+              data: ['浙沪红色旅游区', '大别山红色旅游区', '湘赣闽红色旅游区', '鲁苏皖红色旅游区', '左右江红色旅游区', '雪山草地红色旅游区', '川陕渝红色旅游区', '京津冀红色旅游区', '东北红色旅游区', '太行山红色旅游区', '陕甘宁红色旅游区', '黔北黔西红色旅游区']
+            }
+          ],
+          yAxis: [
+            {
+              type: 'value'
+            }
+          ],
+          series: [
+            {
+              name: '指数',
+              type: 'bar',
+              itemStyle: {
+                // 柱状图的颜色
+                color: barColor
+              },
+              data: [
+                100.0, 92.96, 86.12, 61.85, 47.53, 40.02, 39.89, 16.75, 14.99, 6.96,
+                6.75, 1.0
+              ],
+              markPoint: {
+                data: [
+                  { type: 'max', name: 'Max' },
+                  { type: 'min', name: 'Min' }
+                ]
+              },
+              markLine: {
+                data: [{ type: 'average', name: 'Avg' }]
+              }
+            },
+            {
+              markPoint: {
+                data: [
+                  { name: 'Max', value: 182.2, xAxis: 7, yAxis: 183 },
+                  { name: 'Min', value: 2.3, xAxis: 11, yAxis: 3 }
+                ]
+              },
+              markLine: {
+                data: [{ type: 'average', name: 'Avg' }]
+              }
+            }
+          ]
+        };
+
+        option && myChart.setOption(option);
+    </script>
+    <script>
+        var chartDom = document.getElementById('mainsss');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        var barColor = '#E54D42';
+        option = {
+          title: {
+            text: '全国重点红色城市发展总指数',
+            subtext: '数据来源于：《中国红色旅游发展报告（2022）》'
+          },
+          tooltip: {
+            trigger: 'axis'
+          },
+          legend: {
+            data: ['指数', '指数']
+          },
+          toolbox: {
+            show: true,
+            feature: {
+              dataView: { show: true, readOnly: false },
+              magicType: { show: true, type: ['line', 'bar'] },
+              restore: { show: true },
+              saveAsImage: { show: true }
+            }
+          },
+          calculable: true,
+          xAxis: [
+            {
+              type: 'category',
+              // prettier-ignore
+              data: ['长沙市', '武汉市', '黄冈市', '石家庄', '临沂市', '延安市', '六安市', '湘潭市', '嘉兴市', '遵义市', '信阳市', '安阳市','百色市','龙岩市','井冈山市','常熟市','瑞金市','广安市']
+            }
+          ],
+          yAxis: [
+            {
+              type: 'value'
+            }
+          ],
+          series: [
+            {
+              name: '指数',
+              type: 'bar',
+              itemStyle: {
+                // 柱状图的颜色
+                color: barColor
+              },
+              data: [
+                100.0, 70.16, 63.44, 51.83, 49.75, 45.09, 35.55, 30.53, 27.2, 24.14,
+                23.79, 17.31, 15.88, 13.54, 8.63, 8.45, 7.07, 1.0
+              ],
+              markPoint: {
+                data: [
+                  { type: 'max', name: 'Max' },
+                  { type: 'min', name: 'Min' }
+                ]
+              },
+              markLine: {
+                data: [{ type: 'average', name: 'Avg' }]
+              }
+            },
+            {
+              markPoint: {
+                data: [
+                  { name: 'Max', value: 182.2, xAxis: 7, yAxis: 183 },
+                  { name: 'Min', value: 2.3, xAxis: 11, yAxis: 3 }
+                ]
+              },
+              markLine: {
+                data: [{ type: 'average', name: 'Avg' }]
+              }
+            }
+          ]
+        };
+
+        option && myChart.setOption(option);
+    </script>
+    	
+</body>
+
+</html>

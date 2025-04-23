@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <title>红色旅游景点可视化平台|景点关联度可视化</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
+        <meta content="Themesbrand" name="author">
+        <!-- App favicon -->
+        
+
+        <!-- plugin css -->
+        <link href="/static/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css">
+
+        <!-- preloader css -->
+        <link rel="stylesheet" href="/static/css/preloader.min.css" type="text/css">
+
+        <!-- Bootstrap Css -->
+        <link href="/static/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
+        <!-- Icons Css -->
+        <link href="/static/css/icons.min.css" rel="stylesheet" type="text/css">
+        <!-- App Css-->
+        <link href="/static/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
+        <link href="/static/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+        <link href="/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <link href="/static/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+        <style>
+            .table td:nth-child(1){
+                width: 6%;
+            },
+            .table td:nth-child(2){
+                width: 10%;
+            },
+            .table td:nth-child(3){
+                width: 74%;
+            },
+            .table td:nth-child(4) {
+                width: 10%; /* Set the width for the first three cells */
+            }
+        </style>
+    </head>
+
+    <body>
+
+
+    <!-- <body data-layout="horizontal"> -->
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+
+            <header id="page-topbar">
+                <div class="navbar-header">
+                    <div class="d-flex">
+                        <!-- LOGO -->
+                        <div class="navbar-brand-box">
+                            <a href="" class="logo logo-dark">
+                                <span class="logo-sm">
+                                    <img src="/static/picture/logo-sm.svg" alt="" height="24">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="/static/picture/logo-sm.svg" alt="" height="24"> <span class="logo-txt">红旅景点可视化</span>
+                                </span>
+                            </a>
+
+                            <a href="" class="logo logo-light">
+                                <span class="logo-sm">
+                                    <img src="/static/picture/logo-sm.svg" alt="" height="24">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="/static/picture/logo-sm.svg" alt="" height="24"> <span class="logo-txt">红旅景点可视化</span>
+                                </span>
+                            </a>
+                        </div>
+
+                        <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn">
+                            <i class="fa fa-fw fa-bars"></i>
+                        </button>
+                    </div>
+
+                    <div class="d-flex">
+
+                        <div class="dropdown d-inline-block d-lg-none ms-2">
+                            <button type="button" class="btn header-item" id="page-header-search-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i data-feather="search" class="icon-lg"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-search-dropdown">
+
+                                <form class="p-3">
+                                    <div class="form-group m-0">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="搜索..." aria-label="Search Result">
+
+                                            <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="dropdown d-none d-sm-inline-block">
+                            <button type="button" class="btn header-item" id="mode-setting-btn">
+                                <i data-feather="moon" class="icon-lg layout-mode-dark"></i>
+                                <i data-feather="sun" class="icon-lg layout-mode-light"></i>
+                            </button>
+                        </div>
+
+                        <div class="dropdown d-none d-lg-inline-block ms-1">
+                            <button type="button" class="btn header-item" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i data-feather="grid" class="icon-lg"></i>
+                            </button>
+                        </div>
+
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item noti-icon position-relative" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i data-feather="bell" class="icon-lg"></i>
+                                <span class="badge bg-danger rounded-pill">5</span>
+                            </button>
+                        </div>
+
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item right-bar-toggle me-2">
+                                <i data-feather="settings" class="icon-lg"></i>
+                            </button>
+                        </div>
+
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item topbar-light bg-light-subtle border-start border-end" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img class="rounded-circle header-profile-user" src="/static/picture/avatar-1.jpg" alt="Header Avatar">
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium">用户信息</span>
+                                <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <!-- item-->
+                                <a class="dropdown-item" href="#"><i class="mdi mdi-face-man font-size-16 align-middle me-1"></i> 简介</a>
+                                <a class="dropdown-item" href="#"><i class="mdi mdi-lock font-size-16 align-middle me-1"></i> 锁屏</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> 退出登录</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="vertical-menu">
+
+                <div data-simplebar="" class="h-100">
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <!-- Left Menu Start -->
+                        <ul class="metismenu list-unstyled" id="side-menu">
+                            <li class="menu-title" data-key="t-menu">菜单栏</li>
+
+                            <li>
+                                <a href="/index">
+                                    <i data-feather="home"></i>
+                                    <span data-key="t-homepage">首页</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/table">
+                                    <i data-feather="sliders"></i>
+                                    <span data-key="t-datalist">旅游景点数据列表</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                    <i data-feather="grid"></i>
+                                    <span data-key="t-apps">5A景区评论展示</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li>
+                                        <a href="/table_1">
+                                            <i data-feather="gift"></i>
+                                            <span data-key="t-horizontal">评论展示-首页</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/table_2">
+                                            <i data-feather="briefcase"></i>
+                                            <span data-key="t-horizontal">评论展示-第2页</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/comment_cw">
+                                    <i data-feather="map"></i>
+                                    <span data-key="t-horizontal">景区评论词云展示</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/cor_analysis">
+                                    <i data-feather="file-text"></i>
+                                    <span data-key="t-horizontal">景区关联度可视化展示</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qinggan_analysis">
+                                    <i data-feather="file-text"></i>
+                                    <span data-key="t-horizontal">景区评论情感分析</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <li>
+                                <a href="/qinggan_analysis">
+                                    <i data-feather="file-text"></i>
+                                    <span data-key="t-horizontal">景区评论情感分析</span>
+                                </a>
+                            </li>
+
+                        <div class="card sidebar-alert border-0 text-center mx-4 mb-0 mt-5">
+                            <div class="card-body">
+                                <img src="/static/picture/giftbox.png" alt="">
+                                <div class="mt-4">
+                                    <h5 class="alertcard-title font-size-16">无限制访问</h5>
+                                    <p class="font-size-13">从免费试用版升级您的计划，选择“商业计划”~</p>
+                                    <a href="#!" class="btn btn-primary mt-2">现在更新</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sidebar -->
+                </div>
+            </div>
+            <!-- Left Sidebar End -->
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="mb-sm-0 font-size-18">旅游景点情感分析评论可视化</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">菜单栏</a></li>
+                                            <li class="breadcrumb-item active">旅游景点情感分析评论可视化</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                        <!-- Begin Page Content -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="m-0 font-weight-bold text-primary">全国"红色旅游"评论<code> 数据来源于@https://www.qunar.com</code></h6>
+
+                        </div>
+
+                        </div>
+                    </div>
+                </div>
+                        </div><!-- end row -->
+                    </div>
+                    <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="copyright text-center my-auto">
+                            <span>红色旅游景区可视化平台@<a target="_blank" href="#">Django + Mysql + Echarts</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        
+        <!-- Right Sidebar -->
+        <div class="right-bar">
+            <div data-simplebar="" class="h-100">
+                <div class="rightbar-title d-flex align-items-center p-3">
+
+                    <h5 class="m-0 me-2">Theme Customizer</h5>
+
+                    <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+                        <i class="mdi mdi-close noti-icon"></i>
+                    </a>
+                </div>
+
+                <!-- Settings -->
+                <hr class="m-0">
+
+                <div class="p-4">
+                    <h6 class="mb-3">Layout</h6>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout" id="layout-vertical" value="vertical">
+                        <label class="form-check-label" for="layout-vertical">Vertical</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout" id="layout-horizontal" value="horizontal">
+                        <label class="form-check-label" for="layout-horizontal">Horizontal</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Layout Mode</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-mode" id="layout-mode-light" value="light">
+                        <label class="form-check-label" for="layout-mode-light">Light</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-mode" id="layout-mode-dark" value="dark">
+                        <label class="form-check-label" for="layout-mode-dark">Dark</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Layout Width</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-width" id="layout-width-fuild" value="fuild" onchange="document.body.setAttribute('data-layout-size', 'fluid')">
+                        <label class="form-check-label" for="layout-width-fuild">Fluid</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-width" id="layout-width-boxed" value="boxed" onchange="document.body.setAttribute('data-layout-size', 'boxed')">
+                        <label class="form-check-label" for="layout-width-boxed">Boxed</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Layout Position</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-position" id="layout-position-fixed" value="fixed" onchange="document.body.setAttribute('data-layout-scrollable', 'false')">
+                        <label class="form-check-label" for="layout-position-fixed">Fixed</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-position" id="layout-position-scrollable" value="scrollable" onchange="document.body.setAttribute('data-layout-scrollable', 'true')">
+                        <label class="form-check-label" for="layout-position-scrollable">Scrollable</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Topbar Color</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="topbar-color" id="topbar-color-light" value="light" onchange="document.body.setAttribute('data-topbar', 'light')">
+                        <label class="form-check-label" for="topbar-color-light">Light</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="topbar-color" id="topbar-color-dark" value="dark" onchange="document.body.setAttribute('data-topbar', 'dark')">
+                        <label class="form-check-label" for="topbar-color-dark">Dark</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Size</h6>
+
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-size" id="sidebar-size-default" value="default" onchange="document.body.setAttribute('data-sidebar-size', 'lg')">
+                        <label class="form-check-label" for="sidebar-size-default">Default</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-size" id="sidebar-size-compact" value="compact" onchange="document.body.setAttribute('data-sidebar-size', 'md')">
+                        <label class="form-check-label" for="sidebar-size-compact">Compact</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-size" id="sidebar-size-small" value="small" onchange="document.body.setAttribute('data-sidebar-size', 'sm')">
+                        <label class="form-check-label" for="sidebar-size-small">Small (Icon View)</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Color</h6>
+
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-color" id="sidebar-color-light" value="light" onchange="document.body.setAttribute('data-sidebar', 'light')">
+                        <label class="form-check-label" for="sidebar-color-light">Light</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-color" id="sidebar-color-dark" value="dark" onchange="document.body.setAttribute('data-sidebar', 'dark')">
+                        <label class="form-check-label" for="sidebar-color-dark">Dark</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-color" id="sidebar-color-brand" value="brand" onchange="document.body.setAttribute('data-sidebar', 'brand')">
+                        <label class="form-check-label" for="sidebar-color-brand">Brand</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Direction</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-direction" id="layout-direction-ltr" value="ltr">
+                        <label class="form-check-label" for="layout-direction-ltr">LTR</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-direction" id="layout-direction-rtl" value="rtl">
+                        <label class="form-check-label" for="layout-direction-rtl">RTL</label>
+                    </div>
+
+                </div>
+
+            </div> <!-- end slimscroll-menu-->
+        </div>
+        <!-- /Right-bar -->
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- JAVASCRIPT -->
+        <script src="/static/js/jquery.min.js"></script>
+        <script src="/static/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/js/metisMenu.min.js"></script>
+        <script src="/static/js/simplebar.min.js"></script>
+        <script src="/static/js/waves.min.js"></script>
+        <script src="/static/js/feather.min.js"></script>
+        <!-- pace js -->
+        <script src="/static/js/pace.min.js"></script>
+
+        <!-- apexcharts -->
+        <script src="/static/js/apexcharts.min.js"></script>
+
+        <!-- Plugins js-->
+        <script src="/static/js/jquery-jvectormap-1.2.2.min.js"></script>
+        <script src="/static/js/jquery-jvectormap-world-mill-en.js"></script>
+        <!-- dashboard init -->
+        <script src="/static/js/dashboard.init.js"></script>
+
+        <script src="/static/js/app.js"></script>
+        <script src="/static/js/echarts.js"></script>
+        <script src="/static/vendor/chart.js/Chart.min.js"></script>
+        <script src="/static/vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="/static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="/static/vendor/jquery/jquery.min.js"></script>
+        <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="/static/js/sb-admin-2.min.js"></script>
+        <script src="/static/js/demo/datatables-demo.js"></script>
+        <!-- Page level custom scripts -->
+        <script src="/static/js/demo/chart-area-demo.js"></script>
+        <script src="/static/js/demo/chart-pie-demo.js"></script>
+        <script src="/static/js/echarts.js"></script>
+         <!-- Bootstrap core JavaScript-->
+        <script src="/static/vendor/jquery/jquery.min.js"></script>
+        <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+         <!-- Core plugin JavaScript-->
+        <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+         <!-- Custom scripts for all pages-->
+        <script src="/static/js/sb-admin-2.min.js"></script>
+
+        <!-- Page level plugins -->
+        <script src="/static/vendor/datatables/jquery.dataTables.min.js"></script>
+         <script src="/static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="/static/js/demo/datatables-demo.js"></script>
+
+    	
+</body>
+
+</html>
